@@ -1,5 +1,5 @@
 import { Hero, StoryPreview } from "@/components/sections";
-import { FactCarousel } from "@/components/ui";
+import { FactCarousel, MapSection } from "@/components/ui";
 import { FACTS } from "@/lib/constants";
 
 export default function Home() {
@@ -8,6 +8,7 @@ export default function Home() {
       <Hero />
       <StoryPreview />
       <FactCarousel facts={[...FACTS]} />
+      <MapSection />
     </>
   );
 }

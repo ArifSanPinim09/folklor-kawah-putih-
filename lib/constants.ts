@@ -27,7 +27,6 @@ export const NAVIGATION = [
   { label: "Kisah Karuhun", href: "/kisah-karuhun" },
   { label: "Sunan Ibu", href: "/sunan-ibu" },
   { label: "Galeri", href: "/galeri" },
-  { label: "Peta", href: "/peta" },
 ] as const;
 
 export const FOOTER_TEXT = {

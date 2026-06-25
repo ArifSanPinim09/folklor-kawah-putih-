@@ -1,5 +1,5 @@
 import { StoryHero, StorySection } from "@/components/sections";
-import { CalloutBox, Timeline } from "@/components/ui";
+import { CalloutBox, StoryImageGallery, Timeline } from "@/components/ui";
 import { IMAGE_MAPPING } from "@/lib/image-mapping";
 
 const paragraphs = [
@@ -27,6 +27,19 @@ const timelineItems = [
   },
 ];
 
+const patuhaImages = [
+  {
+    src: IMAGE_MAPPING.sejarah.src,
+    alt: "Kawah Putih dari ketinggian Gunung Patuha",
+    caption: "Danau Kawah Putih dilihat dari kawasan Gunung Patuha",
+  },
+  {
+    src: "/images/IMG_8977.jpg",
+    alt: "Hutan pegunungan di kawasan Gunung Patuha",
+    caption: "Hutan pegunungan yang menjadi kawasan Gunung Patuha",
+  },
+];
+
 export default function GunungPatuhaPage() {
   return (
     <>
@@ -43,6 +56,8 @@ export default function GunungPatuhaPage() {
         imagePosition="left"
         paragraphs={paragraphs}
       />
+
+      <StoryImageGallery images={patuhaImages} layout="duo" />
 
       <section className="bg-kabut-50 pb-12 sm:pb-16 lg:pb-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">

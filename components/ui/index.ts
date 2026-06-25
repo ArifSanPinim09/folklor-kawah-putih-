@@ -4,3 +4,4 @@ export { default as GalleryGrid } from "./GalleryGrid";
 export { default as Lightbox } from "./Lightbox";
 export { default as FactCarousel } from "./FactCarousel";
 export { default as MapSection } from "./MapSection";
+export { default as StoryImageGallery } from "./StoryImageGallery";

@@ -1,11 +1,24 @@
 import { StoryHero, StorySection } from "@/components/sections";
-import { CalloutBox } from "@/components/ui";
+import { CalloutBox, StoryImageGallery } from "@/components/ui";
 import { IMAGE_MAPPING } from "@/lib/image-mapping";
 
 const paragraphs = [
   "Sunan Ibu merupakan sosok yang dihormati dalam cerita rakyat masyarakat sekitar Gunung Patuha. Beliau dikenal sebagai tokoh yang memiliki kebijaksanaan serta kekuatan spiritual yang tinggi.",
   "Dalam berbagai kisah yang berkembang, Sunan Ibu sering dikaitkan dengan penjagaan kawasan Gunung Patuha dan hubungan harmonis antara manusia dengan alam.",
   "Masyarakat meyakini bahwa nilai-nilai yang diwariskan oleh Sunan Ibu mengajarkan pentingnya menghormati lingkungan, sesama manusia, serta menjaga warisan budaya leluhur. Kisah Sunan Ibu menjadi salah satu bagian penting dari folklor yang memperkaya sejarah, budaya, dan nilai-nilai kehidupan yang berkembang di kawasan Kawah Putih.",
+];
+
+const sunanIbuImages = [
+  {
+    src: "/images/IMG_8977.jpg",
+    alt: "Pemandangan matahari terbit di kawasan Sunan Ibu",
+    caption: "Sunrise Point di kawasan Sunan Ibu",
+  },
+  {
+    src: "/images/IMG_8978.jpg",
+    alt: "Suasana alam di sekitar Gunung Patuha",
+    caption: "Keindahan alam yang dijaga oleh nilai-nilai Sunan Ibu",
+  },
 ];
 
 export default function SunanIbuPage() {
@@ -24,6 +37,8 @@ export default function SunanIbuPage() {
         imagePosition="left"
         paragraphs={paragraphs}
       />
+
+      <StoryImageGallery images={sunanIbuImages} layout="duo" />
 
       <section className="bg-kabut-50 pb-12 sm:pb-16 lg:pb-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">

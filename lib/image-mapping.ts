@@ -4,7 +4,7 @@
 export const IMAGE_MAPPING = {
   // Landing Page Hero - panorama Kawah Putih
   hero: {
-    src: "/images/gambar1.jpeg",
+    src: "/images/gunung patuha.jpg",
     alt: "Panorama Kawah Putih dengan kabut yang menyelimuti",
     priority: true,
   },

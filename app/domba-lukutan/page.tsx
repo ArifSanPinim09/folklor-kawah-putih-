@@ -15,7 +15,7 @@ export default function DombaLukutanPage() {
         imageSrc={IMAGE_MAPPING.dombaLukutan.src}
         imageAlt={IMAGE_MAPPING.dombaLukutan.alt}
         title="Domba Lukutan"
-        eyebrow="02 — Penjaga Kawasan"
+        eyebrow="01 — Penjaga Kawasan"
       />
 
       <StorySection

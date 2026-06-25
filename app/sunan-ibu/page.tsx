@@ -15,7 +15,7 @@ export default function SunanIbuPage() {
         imageSrc={IMAGE_MAPPING.sunanIbu.src}
         imageAlt={IMAGE_MAPPING.sunanIbu.alt}
         title="Sunan Ibu"
-        eyebrow="05 — Kebijaksanaan & Harmoni"
+        eyebrow="04 — Kebijaksanaan & Harmoni"
       />
 
       <StorySection

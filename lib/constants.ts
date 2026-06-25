@@ -44,36 +44,29 @@ export const HERO_CONTENT = {
 
 export const STORY_PAGES = [
   {
-    id: "sejarah",
-    number: "01",
-    title: "Sejarah Kawah Putih",
-    eyebrow: "Asal Mula",
-    href: "/sejarah",
-  },
-  {
     id: "domba-lukutan",
-    number: "02",
+    number: "01",
     title: "Domba Lukutan",
     eyebrow: "Penjaga Kawasan",
     href: "/domba-lukutan",
   },
   {
     id: "gunung-patuha",
-    number: "03",
+    number: "02",
     title: "Gunung Patuha",
     eyebrow: "Asal Nama & Tempat Sakral",
     href: "/gunung-patuha",
   },
   {
     id: "kisah-karuhun",
-    number: "04",
+    number: "03",
     title: "Kisah Karuhun",
     eyebrow: "Kearifan Leluhur",
     href: "/kisah-karuhun",
   },
   {
     id: "sunan-ibu",
-    number: "05",
+    number: "04",
     title: "Sunan Ibu",
     eyebrow: "Kebijaksanaan & Harmoni",
     href: "/sunan-ibu",

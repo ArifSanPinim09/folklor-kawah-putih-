@@ -34,7 +34,7 @@ export default function GunungPatuhaPage() {
         imageSrc={IMAGE_MAPPING.gunungPatuha.src}
         imageAlt={IMAGE_MAPPING.gunungPatuha.alt}
         title="Gunung Patuha"
-        eyebrow="03 — Asal Nama & Tempat Sakral"
+        eyebrow="02 — Asal Nama & Tempat Sakral"
       />
 
       <StorySection

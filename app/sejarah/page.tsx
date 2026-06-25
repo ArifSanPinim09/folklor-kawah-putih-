@@ -15,7 +15,7 @@ export default function SejarahPage() {
         imageSrc={IMAGE_MAPPING.sejarah.src}
         imageAlt={IMAGE_MAPPING.sejarah.alt}
         title="Sejarah Kawah Putih"
-        eyebrow="01 — Asal Mula"
+        eyebrow="Asal Mula"
       />
 
       <StorySection

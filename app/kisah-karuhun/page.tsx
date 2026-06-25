@@ -15,7 +15,7 @@ export default function KisahKaruhunPage() {
         imageSrc={IMAGE_MAPPING.kisahKaruhun.src}
         imageAlt={IMAGE_MAPPING.kisahKaruhun.alt}
         title="Kisah Karuhun"
-        eyebrow="04 — Kearifan Leluhur"
+        eyebrow="03 — Kearifan Leluhur"
       />
 
       <StorySection

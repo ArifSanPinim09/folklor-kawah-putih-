@@ -8,7 +8,6 @@ import { STORY_PAGES } from "@/lib/constants";
 import { IMAGE_MAPPING } from "@/lib/image-mapping";
 
 const storyImages = [
-  IMAGE_MAPPING.sejarah,
   IMAGE_MAPPING.dombaLukutan,
   IMAGE_MAPPING.gunungPatuha,
   IMAGE_MAPPING.kisahKaruhun,
@@ -31,7 +30,7 @@ export default function StoryPreview() {
             Jelajahi Cerita
           </p>
           <h2 className="mt-2 font-serif text-3xl font-semibold tracking-tight text-arang-900 sm:text-4xl">
-            Lima Kisah di Balik Kabut
+            Empat Kisah di Balik Kabut
           </h2>
           <p className="mt-4 text-body-lg text-kabut-abu">
             Setiap cerita membawa Anda lebih dalam memahami kearifan lokal dan
@@ -39,9 +38,9 @@ export default function StoryPreview() {
           </p>
         </motion.div>
 
-        {/* Story Cards */}
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 sm:mt-16">
-          {STORY_PAGES.slice(0, 3).map((story, index) => (
+        {/* Story Cards - 4 Kisah */}
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 sm:mt-16">
+          {STORY_PAGES.map((story, index) => (
             <motion.div
               key={story.id}
               initial={{ opacity: 0, y: 30 }}
@@ -60,7 +59,7 @@ export default function StoryPreview() {
                     alt={storyImages[index].alt}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, 50vw"
                   />
                 </div>
 
@@ -77,48 +76,6 @@ export default function StoryPreview() {
                     <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                   </div>
                 </div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Remaining Stories - Compact */}
-        <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          {STORY_PAGES.slice(3).map((story, index) => (
-            <motion.div
-              key={story.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-            >
-              <Link
-                href={story.href}
-                className="group flex items-center gap-4 rounded-md border border-kabut-100 bg-kabut-50 p-4 transition-all duration-300 hover:border-danau-500/20 hover:shadow-md sm:p-5"
-              >
-                {/* Thumbnail */}
-                <div className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-md sm:h-20 sm:w-20">
-                  <Image
-                    src={storyImages[index + 3].src}
-                    alt={storyImages[index + 3].alt}
-                    fill
-                    className="object-cover"
-                    sizes="80px"
-                  />
-                </div>
-
-                {/* Content */}
-                <div className="flex-1 min-w-0">
-                  <p className="text-caption font-medium uppercase tracking-widest text-danau-500">
-                    {story.number} — {story.eyebrow}
-                  </p>
-                  <h3 className="mt-1 font-serif text-lg font-semibold text-arang-900 truncate sm:text-xl">
-                    {story.title}
-                  </h3>
-                </div>
-
-                {/* Arrow */}
-                <ArrowRight className="h-5 w-5 flex-shrink-0 text-danau-500 transition-transform duration-200 group-hover:translate-x-1" />
               </Link>
             </motion.div>
           ))}

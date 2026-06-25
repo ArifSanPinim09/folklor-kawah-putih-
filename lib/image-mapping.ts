@@ -1,5 +1,5 @@
 // Image Mapping for Folklor Kawah Putih
-// Map gambar files to content based on PRD requirements
+// Map gambar files to content based on client revision
 
 export const IMAGE_MAPPING = {
   // Landing Page Hero - panorama Kawah Putih
@@ -9,38 +9,52 @@ export const IMAGE_MAPPING = {
     priority: true,
   },
 
-  // Sejarah Kawah Putih
+  // Sejarah Kawah Putih (pembuka, bukan bagian dari 4 kisah)
   sejarah: {
-    src: "/images/gambar2.jpeg",
+    src: "/images/kawah putih.jpg",
     alt: "Kawah Putih dari sudut pandang berbeda",
     priority: false,
   },
 
-  // Domba Lukutan
+  // Domba Lukutan (01)
   dombaLukutan: {
-    src: "/images/gambar3.jpeg",
+    src: "/images/domba lukutan.jpg",
     alt: "Patung Domba Lukutan",
     priority: false,
   },
 
-  // Gunung Patuha
+  // Gunung Patuha (02)
   gunungPatuha: {
-    src: "/images/gambar4.jpeg",
+    src: "/images/gunung patuha.jpg",
     alt: "Gunung Patuha",
     priority: false,
   },
 
-  // Kisah Karuhun - hutan berkabut
+  // Kisah Karuhun (03)
   kisahKaruhun: {
-    src: "/images/gambar5.jpeg",
-    alt: "Hutan berkabut di kawasan Gunung Patuha",
+    src: "/images/kisah karuhun.png",
+    alt: "Ilustrasi Kisah Karuhun",
     priority: false,
   },
 
-  // Sunan Ibu - sunrise point
+  // Sunan Ibu (04)
   sunanIbu: {
-    src: "/images/gambar6.jpeg",
+    src: "/images/sunan ibu.JPG",
     alt: "Area Sunan Ibu / Sunrise Point",
+    priority: false,
+  },
+
+  // Ritual Pelepasan Domba Putih (untuk halaman Domba Lukutan)
+  ritualDomba: {
+    src: "/images/ritual pelepasan domba putih.PNG",
+    alt: "Ritual pelepasan domba putih",
+    priority: false,
+  },
+
+  // Ritual tambahan
+  ritual2: {
+    src: "/images/ritual 2.PNG",
+    alt: "Ritual tradisional masyarakat sekitar Kawah Putih",
     priority: false,
   },
 
@@ -48,48 +62,64 @@ export const IMAGE_MAPPING = {
   gallery: [
     {
       id: "kawah-putih-1",
-      src: "/images/gambar7.jpeg",
+      src: "/images/kawah putih.jpg",
       alt: "Kawah Putih - pemandangan danau",
       caption: "Danau Kawah Putih",
     },
     {
       id: "domba-lukutan",
-      src: "/images/gambar8.jpeg",
+      src: "/images/domba lukutan.jpg",
       alt: "Patung Domba Lukutan dari dekat",
       caption: "Patung Domba Lukutan",
     },
     {
-      id: "sunrise",
-      src: "/images/gambar9.jpeg",
-      alt: "Sunrise di Gunung Patuha",
-      caption: "Sunrise Gunung Patuha",
-    },
-    {
       id: "gunung-patuha",
-      src: "/images/gambar10.jpeg",
+      src: "/images/gunung patuha.jpg",
       alt: "Gunung Patuha dari kejauhan",
       caption: "Gunung Patuha",
     },
     {
-      id: "hutan",
-      src: "/images/gambar11.jpeg",
-      alt: "Hutan pegunungan di kawasan Kawah Putih",
-      caption: "Hutan Pegunungan",
+      id: "kisah-karuhun",
+      src: "/images/kisah karuhun.png",
+      alt: "Ilustrasi Kisah Karuhun",
+      caption: "Kisah Karuhun",
     },
     {
-      id: "kawah-detail",
-      src: "/images/gambar12.jpeg",
-      alt: "Detail kawah dengan warna air yang unik",
-      caption: "Detail Kawah",
+      id: "sunan-ibu",
+      src: "/images/sunan ibu.JPG",
+      alt: "Area Sunan Ibu",
+      caption: "Sunan Ibu",
     },
-  ],
-
-  // Additional images for variety
-  additional: [
-    "/images/gambar13.jpeg",
-    "/images/gambar14.jpeg",
-    "/images/gambar15.jpeg",
-    "/images/gambar16.jpeg",
+    {
+      id: "ritual-domba",
+      src: "/images/ritual pelepasan domba putih.PNG",
+      alt: "Ritual pelepasan domba putih",
+      caption: "Ritual Pelepasan Domba Putih",
+    },
+    {
+      id: "sejarah",
+      src: "/images/sejarah.jpg",
+      alt: "Sejarah Kawah Putih",
+      caption: "Sejarah Kawah Putih",
+    },
+    {
+      id: "ritual-2",
+      src: "/images/ritual 2.PNG",
+      alt: "Ritual tradisional",
+      caption: "Ritual Tradisional",
+    },
+    {
+      id: "foto-tambahan-1",
+      src: "/images/IMG_8977.jpg",
+      alt: "Pemandangan Kawah Putih",
+      caption: "Pemandangan Alam",
+    },
+    {
+      id: "foto-tambahan-2",
+      src: "/images/IMG_8978.jpg",
+      alt: "Suasana Kawah Putih",
+      caption: "Suasana Kawah Putih",
+    },
   ],
 } as const;
 

@@ -46,28 +46,21 @@ export default function Navbar() {
   // Determine text color based on page type and scroll
   const getTextColor = (isActive: boolean) => {
     if (isLightPage || isScrolled) {
-      return isActive ? "text-danau-700" : "text-arang-900/70 hover:text-arang-900";
+      return isActive ? "text-danau-500" : "text-danau-500/80 hover:text-danau-500";
     }
-    return isActive ? "text-kabut-50" : "text-kabut-50/80 hover:text-kabut-50";
-  };
-
-  const getLogoColor = () => {
-    if (isLightPage || isScrolled) {
-      return "text-danau-700";
-    }
-    return "text-kabut-50";
+    return isActive ? "text-danau-500" : "text-kabut-50/80 hover:text-kabut-50";
   };
 
   const getIndicatorColor = () => {
     if (isLightPage || isScrolled) {
       return "bg-danau-500";
     }
-    return "bg-kabut-50";
+    return "bg-danau-500";
   };
 
   const getButtonColor = () => {
     if (isOpen) return "text-arang-900";
-    if (isLightPage || isScrolled) return "text-arang-900";
+    if (isLightPage || isScrolled) return "text-danau-500";
     return "text-kabut-50";
   };
 
@@ -92,10 +85,9 @@ export default function Navbar() {
               href="/"
               className="relative z-10 flex items-center gap-2"
             >
-              <span
-                className={`font-serif text-xl font-semibold transition-colors duration-300 sm:text-2xl ${getLogoColor()}`}
-              >
-                Kawah Putih
+              <span className="font-serif text-xl font-semibold transition-colors duration-300 sm:text-2xl">
+                <span className="text-danau-500">Kawah</span>{" "}
+                <span className={isLightPage || isScrolled ? "text-arang-900" : "text-kabut-50"}>Putih</span>
               </span>
             </Link>
 

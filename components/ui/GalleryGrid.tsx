@@ -22,35 +22,28 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+      {/* Masonry layout — kartu menyesuaikan tinggi gambar */}
+      <div className="columns-2 gap-3 sm:gap-4 lg:columns-3">
         {images.map((image, index) => (
           <motion.button
             key={image.id}
-            className={`group relative overflow-hidden rounded-md ${
-              index === 0 ? "lg:col-span-2 lg:row-span-2" : ""
-            }`}
+            className="group relative mb-3 block w-full overflow-hidden rounded-md sm:mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            transition={{ duration: 0.5, delay: index * 0.08 }}
             onClick={() => setSelectedIndex(index)}
             aria-label={`Lihat ${image.caption}`}
           >
-            <div
-              className={`relative overflow-hidden ${
-                index === 0 ? "aspect-[4/3] lg:aspect-[16/10]" : "aspect-square"
-              }`}
-            >
+            {/* Gambar mengikuti rasio aslinya */}
+            <div className="relative overflow-hidden">
               <Image
                 src={image.src}
                 alt={image.alt}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes={
-                  index === 0
-                    ? "(max-width: 1024px) 100vw, 66vw"
-                    : "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                }
+                width={600}
+                height={400}
+                className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
               />
 
               {/* Hover Overlay */}

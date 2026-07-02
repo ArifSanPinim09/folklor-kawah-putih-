@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
 import { Navbar, Footer } from "@/components/layout";
+import { LanguageProvider } from "@/lib/language-context";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -41,15 +42,16 @@ export default function RootLayout({
       className={`${fraunces.variable} ${plusJakarta.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        {/* Skip to main content for accessibility */}
-        <a href="#main-content" className="skip-link">
-          Langsung ke konten utama
-        </a>
-        <Navbar />
-        <main id="main-content" className="flex-1">
-          {children}
-        </main>
-        <Footer />
+        <LanguageProvider>
+          <a href="#main-content" className="skip-link">
+            Langsung ke konten utama
+          </a>
+          <Navbar />
+          <main id="main-content" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

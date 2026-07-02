@@ -1,41 +1,46 @@
+"use client";
+
 import { StoryHero, StorySection } from "@/components/sections";
 import { CalloutBox, StoryImageGallery } from "@/components/ui";
+import { useLanguage } from "@/lib/language-context";
 import { IMAGE_MAPPING } from "@/lib/image-mapping";
 
-const paragraphs = [
-  "Dalam budaya Sunda, karuhun merupakan sebutan bagi leluhur atau nenek moyang yang dihormati. Masyarakat sekitar Gunung Patuha percaya bahwa para karuhun memiliki peran penting dalam menjaga keseimbangan antara alam dan kehidupan manusia.",
-  "Berbagai cerita, tradisi, dan kepercayaan yang berkembang di kawasan Kawah Putih sering dikaitkan dengan keberadaan karuhun sebagai sumber nilai, petuah, serta kearifan lokal.",
-  "Kisah-kisah tersebut diwariskan dari generasi ke generasi dan menjadi bagian penting dari identitas budaya masyarakat Sunda hingga saat ini.",
-];
-
-const karuhunImages = [
-  {
-    src: "/images/IMG_8978.jpg",
-    alt: "Suasana kawasan Gunung Patuha yang sakral",
-    caption: "Kawasan Gunung Patuha — tempat kearifan leluhur bersemi",
-  },
-  {
-    src: "/images/sejarah.jpg",
-    alt: "Pemandangan alam kawasan Kawah Putih",
-    caption: "Alam yang dijaga oleh para karuhun",
-  },
-];
-
 export default function KisahKaruhunPage() {
+  const { t } = useLanguage();
+
+  const paragraphs = t("stories.kisahKaruhun.paragraphs");
+  const paragraphsArray = typeof paragraphs === "string" ? [paragraphs] : paragraphs;
+
+  const imageCaptions = t("stories.kisahKaruhun.imageCaptions");
+  const captionsArray = typeof imageCaptions === "string" ? [imageCaptions] : imageCaptions;
+
+  const karuhunImages = [
+    {
+      src: "/images/IMG_8978.jpg",
+      alt: "Suasana kawasan Gunung Patuha yang sakral",
+      caption: captionsArray[0] || "",
+    },
+    {
+      src: "/images/sejarah.jpg",
+      alt: "Pemandangan alam kawasan Kawah Putih",
+      caption: captionsArray[1] || "",
+    },
+  ];
+
   return (
     <>
       <StoryHero
         imageSrc={IMAGE_MAPPING.kisahKaruhun.src}
         imageAlt={IMAGE_MAPPING.kisahKaruhun.alt}
-        title="Kisah Karuhun"
-        eyebrow="03 — Kearifan Leluhur"
+        title={t("stories.kisahKaruhun.title")}
+        eyebrow={t("stories.kisahKaruhun.eyebrow")}
       />
 
       <StorySection
         imageSrc={IMAGE_MAPPING.kisahKaruhun.src}
         imageAlt={IMAGE_MAPPING.kisahKaruhun.alt}
         imagePosition="right"
-        paragraphs={paragraphs}
+        paragraphs={paragraphsArray}
       />
 
       <StoryImageGallery images={karuhunImages} layout="duo" />
@@ -43,8 +48,7 @@ export default function KisahKaruhunPage() {
       <section className="bg-kabut-50 pb-16 sm:pb-20 lg:pb-24">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <CalloutBox variant="pesan">
-            &ldquo;Karuhun memiliki peran penting dalam menjaga keseimbangan
-            antara alam dan kehidupan manusia.&rdquo;
+            {t("stories.kisahKaruhun.callout")}
           </CalloutBox>
         </div>
       </section>

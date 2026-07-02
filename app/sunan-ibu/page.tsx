@@ -1,41 +1,46 @@
+"use client";
+
 import { StoryHero, StorySection } from "@/components/sections";
 import { CalloutBox, StoryImageGallery } from "@/components/ui";
+import { useLanguage } from "@/lib/language-context";
 import { IMAGE_MAPPING } from "@/lib/image-mapping";
 
-const paragraphs = [
-  "Sunan Ibu merupakan sosok yang dihormati dalam cerita rakyat masyarakat sekitar Gunung Patuha. Beliau dikenal sebagai tokoh yang memiliki kebijaksanaan serta kekuatan spiritual yang tinggi.",
-  "Dalam berbagai kisah yang berkembang, Sunan Ibu sering dikaitkan dengan penjagaan kawasan Gunung Patuha dan hubungan harmonis antara manusia dengan alam.",
-  "Masyarakat meyakini bahwa nilai-nilai yang diwariskan oleh Sunan Ibu mengajarkan pentingnya menghormati lingkungan, sesama manusia, serta menjaga warisan budaya leluhur. Kisah Sunan Ibu menjadi salah satu bagian penting dari folklor yang memperkaya sejarah, budaya, dan nilai-nilai kehidupan yang berkembang di kawasan Kawah Putih.",
-];
-
-const sunanIbuImages = [
-  {
-    src: "/images/IMG_8977.jpg",
-    alt: "Pemandangan matahari terbit di kawasan Sunan Ibu",
-    caption: "Sunrise Point di kawasan Sunan Ibu",
-  },
-  {
-    src: "/images/IMG_8978.jpg",
-    alt: "Suasana alam di sekitar Gunung Patuha",
-    caption: "Keindahan alam yang dijaga oleh nilai-nilai Sunan Ibu",
-  },
-];
-
 export default function SunanIbuPage() {
+  const { t } = useLanguage();
+
+  const paragraphs = t("stories.sunanIbu.paragraphs");
+  const paragraphsArray = typeof paragraphs === "string" ? [paragraphs] : paragraphs;
+
+  const imageCaptions = t("stories.sunanIbu.imageCaptions");
+  const captionsArray = typeof imageCaptions === "string" ? [imageCaptions] : imageCaptions;
+
+  const sunanIbuImages = [
+    {
+      src: "/images/IMG_8977.jpg",
+      alt: "Pemandangan matahari terbit di kawasan Sunan Ibu",
+      caption: captionsArray[0] || "",
+    },
+    {
+      src: "/images/IMG_8978.jpg",
+      alt: "Suasana alam di sekitar Gunung Patuha",
+      caption: captionsArray[1] || "",
+    },
+  ];
+
   return (
     <>
       <StoryHero
         imageSrc={IMAGE_MAPPING.sunanIbu.src}
         imageAlt={IMAGE_MAPPING.sunanIbu.alt}
-        title="Sunan Ibu"
-        eyebrow="04 — Kebijaksanaan & Harmoni"
+        title={t("stories.sunanIbu.title")}
+        eyebrow={t("stories.sunanIbu.eyebrow")}
       />
 
       <StorySection
         imageSrc={IMAGE_MAPPING.sunanIbu.src}
         imageAlt={IMAGE_MAPPING.sunanIbu.alt}
         imagePosition="left"
-        paragraphs={paragraphs}
+        paragraphs={paragraphsArray}
       />
 
       <StoryImageGallery images={sunanIbuImages} layout="duo" />
@@ -43,8 +48,7 @@ export default function SunanIbuPage() {
       <section className="bg-kabut-50 pb-12 sm:pb-16 lg:pb-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <CalloutBox variant="nilai">
-            Nilai-nilai Sunan Ibu mengajarkan pentingnya menghormati lingkungan,
-            sesama manusia, dan warisan budaya leluhur.
+            {t("stories.sunanIbu.callout")}
           </CalloutBox>
         </div>
       </section>

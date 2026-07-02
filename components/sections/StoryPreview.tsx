@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { STORY_PAGES } from "@/lib/constants";
+import { useLanguage } from "@/lib/language-context";
 import { IMAGE_MAPPING } from "@/lib/image-mapping";
 
 const storyImages = [
@@ -14,7 +14,16 @@ const storyImages = [
   IMAGE_MAPPING.sunanIbu,
 ];
 
+const STORY_ITEMS = [
+  { id: "domba-lukutan", number: "01", titleKey: "stories.dombaLukutan.title", eyebrowKey: "stories.dombaLukutan.eyebrow", href: "/domba-lukutan" },
+  { id: "gunung-patuha", number: "02", titleKey: "stories.gunungPatuha.title", eyebrowKey: "stories.gunungPatuha.eyebrow", href: "/gunung-patuha" },
+  { id: "kisah-karuhun", number: "03", titleKey: "stories.kisahKaruhun.title", eyebrowKey: "stories.kisahKaruhun.eyebrow", href: "/kisah-karuhun" },
+  { id: "sunan-ibu", number: "04", titleKey: "stories.sunanIbu.title", eyebrowKey: "stories.sunanIbu.eyebrow", href: "/sunan-ibu" },
+];
+
 export default function StoryPreview() {
+  const { t } = useLanguage();
+
   return (
     <section id="story-preview" className="bg-kabut-50 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -27,20 +36,19 @@ export default function StoryPreview() {
           transition={{ duration: 0.6 }}
         >
           <p className="text-caption font-medium uppercase tracking-widest text-danau-500">
-            Jelajahi Cerita
+            {t("storyPreview.eyebrow")}
           </p>
           <h2 className="mt-2 font-serif text-3xl font-semibold tracking-tight text-arang-900 sm:text-4xl">
-            Empat Kisah di Balik Kabut
+            {t("storyPreview.title")}
           </h2>
           <p className="mt-4 text-body-lg text-kabut-abu">
-            Setiap cerita membawa Anda lebih dalam memahami kearifan lokal dan
-            keindahan alam Kawah Putih.
+            {t("storyPreview.description")}
           </p>
         </motion.div>
 
         {/* Story Cards - 4 Kisah */}
         <div className="mt-12 grid gap-6 sm:grid-cols-2 sm:mt-16">
-          {STORY_PAGES.map((story, index) => (
+          {STORY_ITEMS.map((story, index) => (
             <motion.div
               key={story.id}
               initial={{ opacity: 0, y: 30 }}
@@ -66,13 +74,13 @@ export default function StoryPreview() {
                 {/* Content */}
                 <div className="p-5 sm:p-6">
                   <p className="text-caption font-medium uppercase tracking-widest text-danau-500">
-                    {story.number} — {story.eyebrow}
+                    {story.number} — {t(story.eyebrowKey)}
                   </p>
                   <h3 className="mt-2 font-serif text-xl font-semibold text-arang-900 sm:text-2xl">
-                    {story.title}
+                    {t(story.titleKey)}
                   </h3>
                   <div className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-danau-500 transition-colors duration-200 group-hover:text-danau-700">
-                    Baca cerita
+                    {t("storyPreview.readStory")}
                     <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                   </div>
                 </div>

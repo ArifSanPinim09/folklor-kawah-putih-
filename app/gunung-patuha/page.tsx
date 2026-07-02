@@ -1,60 +1,49 @@
+"use client";
+
 import { StoryHero, StorySection } from "@/components/sections";
 import { CalloutBox, StoryImageGallery, Timeline } from "@/components/ui";
+import { useLanguage } from "@/lib/language-context";
 import { IMAGE_MAPPING } from "@/lib/image-mapping";
 
-const paragraphs = [
-  "Gunung Patuha adalah gunung berapi yang terletak di bagian selatan Kabupaten Bandung dengan ketinggian sekitar 2.434 meter di atas permukaan laut.",
-  'Nama "Patuha" berasal dari istilah "Pak Tua", yang berarti orang tua atau sesepuh yang dihormati. Masyarakat setempat meyakini bahwa gunung ini memiliki nilai spiritual yang kuat dan berkaitan dengan keberadaan para leluhur.',
-  "Selain menjadi lokasi terbentuknya Kawah Putih, Gunung Patuha juga memiliki kekayaan alam berupa hutan pegunungan, sumber panas bumi, serta beragam flora dan fauna yang hidup di kawasan tersebut.",
-];
-
-const timelineItems = [
-  {
-    title: "Pak Tua",
-    description: "Asal nilai spiritual & nama",
-  },
-  {
-    title: "Gunung Patuha",
-    description: "Gunung berapi yang dihormati",
-  },
-  {
-    title: "Kawah Putih",
-    description: "Terbentuk dari letusan",
-  },
-  {
-    title: "Hutan, Panas Bumi & Flora-Fauna",
-    description: "Kekayaan alam kawasan",
-  },
-];
-
-const patuhaImages = [
-  {
-    src: IMAGE_MAPPING.sejarah.src,
-    alt: "Kawah Putih dari ketinggian Gunung Patuha",
-    caption: "Danau Kawah Putih dilihat dari kawasan Gunung Patuha",
-  },
-  {
-    src: "/images/IMG_8977.jpg",
-    alt: "Hutan pegunungan di kawasan Gunung Patuha",
-    caption: "Hutan pegunungan yang menjadi kawasan Gunung Patuha",
-  },
-];
-
 export default function GunungPatuhaPage() {
+  const { t } = useLanguage();
+
+  const paragraphs = t("stories.gunungPatuha.paragraphs");
+  const paragraphsArray = typeof paragraphs === "string" ? [paragraphs] : paragraphs;
+
+  const timelineItems = t("stories.gunungPatuha.timeline.items");
+  const timelineArray = typeof timelineItems === "string" ? [{ title: timelineItems, description: "" }] : timelineItems;
+
+  const imageCaptions = t("stories.gunungPatuha.imageCaptions");
+  const captionsArray = typeof imageCaptions === "string" ? [imageCaptions] : imageCaptions;
+
+  const patuhaImages = [
+    {
+      src: IMAGE_MAPPING.sejarah.src,
+      alt: "Kawah Putih dari ketinggian Gunung Patuha",
+      caption: captionsArray[0] || "",
+    },
+    {
+      src: "/images/IMG_8977.jpg",
+      alt: "Hutan pegunungan di kawasan Gunung Patuha",
+      caption: captionsArray[1] || "",
+    },
+  ];
+
   return (
     <>
       <StoryHero
         imageSrc={IMAGE_MAPPING.gunungPatuha.src}
         imageAlt={IMAGE_MAPPING.gunungPatuha.alt}
-        title="Gunung Patuha"
-        eyebrow="02 — Asal Nama & Tempat Sakral"
+        title={t("stories.gunungPatuha.title")}
+        eyebrow={t("stories.gunungPatuha.eyebrow")}
       />
 
       <StorySection
         imageSrc={IMAGE_MAPPING.gunungPatuha.src}
         imageAlt={IMAGE_MAPPING.gunungPatuha.alt}
         imagePosition="left"
-        paragraphs={paragraphs}
+        paragraphs={paragraphsArray}
       />
 
       <StoryImageGallery images={patuhaImages} layout="duo" />
@@ -62,8 +51,7 @@ export default function GunungPatuhaPage() {
       <section className="bg-kabut-50 pb-12 sm:pb-16 lg:pb-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <CalloutBox variant="trivia">
-            Nama &quot;Patuha&quot; berasal dari istilah &quot;Pak Tua&quot; —
-            sesepuh yang dihormati masyarakat sekitar.
+            {t("stories.gunungPatuha.callout")}
           </CalloutBox>
         </div>
       </section>
@@ -71,9 +59,9 @@ export default function GunungPatuhaPage() {
       <section className="bg-kabut-100 py-12 sm:py-16 lg:py-20">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <h2 className="mb-8 text-center font-serif text-2xl font-semibold text-arang-900 sm:mb-12 sm:text-3xl">
-            Alur Sejarah
+            {t("stories.gunungPatuha.timeline.title")}
           </h2>
-          <Timeline items={timelineItems} />
+          <Timeline items={timelineArray} />
         </div>
       </section>
     </>

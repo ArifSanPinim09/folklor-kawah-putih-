@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, ArrowRight } from "lucide-react";
-import { HERO_CONTENT } from "@/lib/constants";
+import { useLanguage } from "@/lib/language-context";
 import { IMAGE_MAPPING } from "@/lib/image-mapping";
 
 export default function Hero() {
@@ -14,6 +14,7 @@ export default function Hero() {
     target: containerRef,
     offset: ["start start", "end start"],
   });
+  const { t } = useLanguage();
 
   const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
@@ -103,7 +104,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Folklor Kawah Putih
+            {t("hero.eyebrow")}
           </motion.p>
 
           {/* Headline */}
@@ -113,7 +114,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {HERO_CONTENT.headline}
+            {t("hero.headline")}
           </motion.h1>
 
           {/* Description */}
@@ -123,7 +124,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            {HERO_CONTENT.description}
+            {t("hero.description")}
           </motion.p>
 
           {/* CTA Button */}
@@ -137,7 +138,7 @@ export default function Hero() {
               href="/sejarah"
               className="group inline-flex items-center gap-2 rounded-md bg-danau-500 px-6 py-3 text-body font-medium text-kabut-50 transition-all duration-200 hover:bg-danau-700 hover:scale-[1.02] active:scale-[0.98] sm:px-8 sm:py-4"
             >
-              {HERO_CONTENT.cta}
+              {t("hero.cta")}
               <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
             </Link>
           </motion.div>
@@ -162,7 +163,7 @@ export default function Hero() {
           <Link
             href="#story-preview"
             className="flex h-12 w-12 items-center justify-center rounded-full border border-arang-900/20 text-arang-900/60 transition-colors duration-200 hover:border-arang-900/40 hover:text-arang-900/80"
-            aria-label="Scroll ke bawah"
+            aria-label={t("accessibility.scrollToBottom")}
           >
             <ChevronDown className="h-6 w-6" />
           </Link>

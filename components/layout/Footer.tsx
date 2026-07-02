@@ -1,6 +1,10 @@
-import { FOOTER_TEXT } from "@/lib/constants";
+"use client";
+
+import { useLanguage } from "@/lib/language-context";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-arang-900 text-kabut-50">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
@@ -15,12 +19,12 @@ export default function Footer() {
 
           {/* Description */}
           <p className="text-body-lg leading-relaxed text-kabut-50/80">
-            {FOOTER_TEXT.description}
+            {t("footer.description")}
           </p>
 
           {/* Copyright */}
           <p className="mt-8 text-caption text-kabut-50/50">
-            {FOOTER_TEXT.copyright}
+            {t("footer.copyright")}
           </p>
         </div>
       </div>

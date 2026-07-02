@@ -4,16 +4,26 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { NAVIGATION } from "@/lib/constants";
+import { Menu, X, Globe } from "lucide-react";
+import { useLanguage } from "@/lib/language-context";
 
-// Pages without hero image (light background)
 const LIGHT_PAGES = ["/galeri", "/peta"];
+
+const NAV_ITEMS = [
+  { labelKey: "nav.beranda", href: "/" },
+  { labelKey: "nav.sejarah", href: "/sejarah" },
+  { labelKey: "nav.dombaLukutan", href: "/domba-lukutan" },
+  { labelKey: "nav.gunungPatuha", href: "/gunung-patuha" },
+  { labelKey: "nav.kisahKaruhun", href: "/kisah-karuhun" },
+  { labelKey: "nav.sunanIbu", href: "/sunan-ibu" },
+  { labelKey: "nav.galeri", href: "/galeri" },
+];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const { language, setLanguage, t } = useLanguage();
 
   const isLightPage = LIGHT_PAGES.includes(pathname);
 
@@ -26,12 +36,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu on route change
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -43,7 +51,6 @@ export default function Navbar() {
     };
   }, [isOpen]);
 
-  // Determine text color based on page type and scroll
   const getTextColor = (isActive: boolean) => {
     if (isLightPage || isScrolled) {
       return isActive ? "text-danau-700" : "text-arang-900/70 hover:text-arang-900";
@@ -69,6 +76,27 @@ export default function Navbar() {
     if (isOpen) return "text-arang-900";
     if (isLightPage || isScrolled) return "text-arang-900";
     return "text-kabut-50";
+  };
+
+  const getToggleBg = () => {
+    if (isLightPage || isScrolled) {
+      return "bg-kabut-100 hover:bg-kabut-100/80";
+    }
+    return "bg-kabut-50/20 hover:bg-kabut-50/30";
+  };
+
+  const getToggleText = () => {
+    if (isLightPage || isScrolled) {
+      return "text-arang-900";
+    }
+    return "text-kabut-50";
+  };
+
+  const getToggleActiveBg = () => {
+    if (isLightPage || isScrolled) {
+      return "bg-danau-500 text-kabut-50";
+    }
+    return "bg-kabut-50 text-danau-700";
   };
 
   return (
@@ -102,7 +130,7 @@ export default function Navbar() {
             {/* Desktop Navigation */}
             <div className="hidden lg:block">
               <div className="flex items-center gap-1">
-                {NAVIGATION.map((item) => {
+                {NAV_ITEMS.map((item) => {
                   const isActive = pathname === item.href;
                   return (
                     <Link
@@ -110,7 +138,7 @@ export default function Navbar() {
                       href={item.href}
                       className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 ${getTextColor(isActive)}`}
                     >
-                      {item.label}
+                      {t(item.labelKey)}
                       {isActive && (
                         <motion.div
                           className={`absolute bottom-0 left-3 right-3 h-0.5 ${getIndicatorColor()}`}
@@ -128,36 +156,63 @@ export default function Navbar() {
               </div>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className={`relative z-10 flex h-10 w-10 items-center justify-center rounded-md transition-colors duration-200 lg:hidden ${getButtonColor()}`}
-              aria-label={isOpen ? "Tutup menu" : "Buka menu"}
-            >
-              <AnimatePresence mode="wait">
-                {isOpen ? (
-                  <motion.div
-                    key="close"
-                    initial={{ opacity: 0, rotate: -90 }}
-                    animate={{ opacity: 1, rotate: 0 }}
-                    exit={{ opacity: 0, rotate: 90 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <X className="h-6 w-6" />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="menu"
-                    initial={{ opacity: 0, rotate: 90 }}
-                    animate={{ opacity: 1, rotate: 0 }}
-                    exit={{ opacity: 0, rotate: -90 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Menu className="h-6 w-6" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </button>
+            {/* Language Toggle + Mobile Menu Button */}
+            <div className="flex items-center gap-3">
+              {/* Language Toggle */}
+              <div className={`flex items-center rounded-full p-1 ${getToggleBg()} transition-colors duration-300`}>
+                <button
+                  onClick={() => setLanguage("id")}
+                  className={`relative flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-300 ${
+                    language === "id" ? getToggleActiveBg() : getToggleText()
+                  }`}
+                  aria-label="Switch to Indonesian"
+                >
+                  <Globe className="h-3.5 w-3.5" />
+                  <span>ID</span>
+                </button>
+                <button
+                  onClick={() => setLanguage("en")}
+                  className={`relative flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-300 ${
+                    language === "en" ? getToggleActiveBg() : getToggleText()
+                  }`}
+                  aria-label="Switch to English"
+                >
+                  <Globe className="h-3.5 w-3.5" />
+                  <span>EN</span>
+                </button>
+              </div>
+
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className={`relative z-10 flex h-10 w-10 items-center justify-center rounded-md transition-colors duration-200 lg:hidden ${getButtonColor()}`}
+                aria-label={isOpen ? t("accessibility.closeMenu") : t("accessibility.openMenu")}
+              >
+                <AnimatePresence mode="wait">
+                  {isOpen ? (
+                    <motion.div
+                      key="close"
+                      initial={{ opacity: 0, rotate: -90 }}
+                      animate={{ opacity: 1, rotate: 0 }}
+                      exit={{ opacity: 0, rotate: 90 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <X className="h-6 w-6" />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="menu"
+                      initial={{ opacity: 0, rotate: 90 }}
+                      animate={{ opacity: 1, rotate: 0 }}
+                      exit={{ opacity: 0, rotate: -90 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <Menu className="h-6 w-6" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </button>
+            </div>
           </div>
         </nav>
       </motion.header>
@@ -192,7 +247,7 @@ export default function Navbar() {
               <div className="flex h-full flex-col pt-20 pb-6 px-6">
                 <nav className="flex-1">
                   <ul className="space-y-1">
-                    {NAVIGATION.map((item, index) => {
+                    {NAV_ITEMS.map((item, index) => {
                       const isActive = pathname === item.href;
                       return (
                         <motion.li
@@ -212,7 +267,7 @@ export default function Navbar() {
                                 : "text-arang-900/70 hover:bg-kabut-100 hover:text-arang-900"
                             }`}
                           >
-                            {item.label}
+                            {t(item.labelKey)}
                           </Link>
                         </motion.li>
                       );
@@ -220,15 +275,40 @@ export default function Navbar() {
                   </ul>
                 </nav>
 
-                {/* Footer text in mobile menu */}
+                {/* Language Toggle in Mobile Menu */}
                 <motion.div
                   className="mt-auto pt-6 border-t border-kabut-100"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <p className="text-caption text-kabut-abu">
-                    Jelajahi folklor Kawah Putih
+                  <p className="text-caption text-kabut-abu mb-3">
+                    {language === "id" ? "Bahasa" : "Language"}
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => setLanguage("id")}
+                      className={`flex-1 rounded-md px-4 py-2.5 text-sm font-medium transition-all duration-300 ${
+                        language === "id"
+                          ? "bg-danau-500 text-kabut-50"
+                          : "bg-kabut-100 text-arang-900/70 hover:bg-kabut-100/80"
+                      }`}
+                    >
+                      Indonesia
+                    </button>
+                    <button
+                      onClick={() => setLanguage("en")}
+                      className={`flex-1 rounded-md px-4 py-2.5 text-sm font-medium transition-all duration-300 ${
+                        language === "en"
+                          ? "bg-danau-500 text-kabut-50"
+                          : "bg-kabut-100 text-arang-900/70 hover:bg-kabut-100/80"
+                      }`}
+                    >
+                      English
+                    </button>
+                  </div>
+                  <p className="text-caption text-kabut-abu mt-4">
+                    {t("nav.exploreFolklor")}
                   </p>
                 </motion.div>
               </div>

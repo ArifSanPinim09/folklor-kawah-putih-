@@ -3,17 +3,39 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, X } from "lucide-react";
-import { MAP_MARKERS } from "@/lib/constants";
+import { useLanguage } from "@/lib/language-context";
 
 interface MarkerInfo {
   id: string;
-  name: string;
-  description: string;
+  nameKey: string;
+  descriptionKey: string;
   position: { lat: number; lng: number };
 }
 
+const MARKERS: MarkerInfo[] = [
+  {
+    id: "kawah-putih",
+    nameKey: "map.markers.kawahPutih.name",
+    descriptionKey: "map.markers.kawahPutih.description",
+    position: { lat: -7.1661, lng: 107.4024 },
+  },
+  {
+    id: "domba-lukutan",
+    nameKey: "map.markers.dombaLukutan.name",
+    descriptionKey: "map.markers.dombaLukutan.description",
+    position: { lat: -7.1655, lng: 107.4018 },
+  },
+  {
+    id: "sunan-ibu",
+    nameKey: "map.markers.sunanIbu.name",
+    descriptionKey: "map.markers.sunanIbu.description",
+    position: { lat: -7.167, lng: 107.403 },
+  },
+];
+
 export default function MapSection() {
   const [selectedMarker, setSelectedMarker] = useState<MarkerInfo | null>(null);
+  const { t } = useLanguage();
 
   return (
     <section className="bg-kabut-100 py-12 sm:py-16 lg:py-20">
@@ -27,13 +49,13 @@ export default function MapSection() {
           transition={{ duration: 0.6 }}
         >
           <p className="text-caption font-medium uppercase tracking-widest text-danau-500">
-            Peta Lokasi
+            {t("map.eyebrow")}
           </p>
           <h2 className="mt-2 font-serif text-2xl font-semibold text-arang-900 sm:text-3xl">
-            Jelajahi Kawasan Kawah Putih
+            {t("map.title")}
           </h2>
           <p className="mt-4 text-body-lg text-kabut-abu">
-            Tiga lokasi penting di kawasan Gunung Patuha yang wajib dikunjungi.
+            {t("map.description")}
           </p>
         </motion.div>
 
@@ -55,13 +77,13 @@ export default function MapSection() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Peta Kawah Putih"
+              title={t("map.mapTitle")}
               className="absolute inset-0"
             />
 
             {/* Custom Markers Overlay */}
             <div className="absolute inset-0 pointer-events-none">
-              {MAP_MARKERS.map((marker, index) => (
+              {MARKERS.map((marker, index) => (
                 <button
                   key={marker.id}
                   className="pointer-events-auto absolute"
@@ -70,7 +92,7 @@ export default function MapSection() {
                     top: `${40 + (index % 2) * 20}%`,
                   }}
                   onClick={() => setSelectedMarker(marker)}
-                  aria-label={`Lihat info ${marker.name}`}
+                  aria-label={`${t("map.viewInfo")} ${t(marker.nameKey)}`}
                 >
                   <motion.div
                     className="flex h-10 w-10 items-center justify-center rounded-full bg-danau-500 text-kabut-50 shadow-lg"
@@ -105,17 +127,17 @@ export default function MapSection() {
                   <div className="flex items-center gap-2">
                     <MapPin className="h-4 w-4 text-danau-500" />
                     <h3 className="font-serif text-lg font-semibold text-arang-900">
-                      {selectedMarker.name}
+                      {t(selectedMarker.nameKey)}
                     </h3>
                   </div>
                   <p className="mt-2 text-body text-kabut-abu">
-                    {selectedMarker.description}
+                    {t(selectedMarker.descriptionKey)}
                   </p>
                 </div>
                 <button
                   onClick={() => setSelectedMarker(null)}
                   className="rounded-full p-1 text-kabut-abu transition-colors duration-200 hover:bg-kabut-100 hover:text-arang-900"
-                  aria-label="Tutup info"
+                  aria-label={t("map.closeInfo")}
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -126,7 +148,7 @@ export default function MapSection() {
 
         {/* Markers List */}
         <div className="mt-6 grid gap-4 sm:grid-cols-3">
-          {MAP_MARKERS.map((marker, index) => (
+          {MARKERS.map((marker, index) => (
             <motion.button
               key={marker.id}
               className="flex items-start gap-3 rounded-md border border-kabut-100 bg-kabut-50 p-4 text-left transition-all duration-200 hover:border-danau-500/20 hover:shadow-md"
@@ -139,10 +161,10 @@ export default function MapSection() {
               <MapPin className="mt-0.5 h-5 w-5 flex-shrink-0 text-danau-500" />
               <div>
                 <h3 className="font-serif text-base font-semibold text-arang-900">
-                  {marker.name}
+                  {t(marker.nameKey)}
                 </h3>
                 <p className="mt-1 text-caption text-kabut-abu">
-                  {marker.description}
+                  {t(marker.descriptionKey)}
                 </p>
               </div>
             </motion.button>

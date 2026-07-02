@@ -19,7 +19,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Folklor Kawah Putih — Menjelajahi Cerita di Balik Kabut",
   description:
-    "Website interpretasi digital folklor Kawah Putih. Jelajahi sejarah, legenda, dan kearifan lokal yang hidup di balik keindahan Gunung Patuha.",
+    "Website interpretasi digital folklor Kawah Putih. Jelajahi sejarah, legenda, dan kearifan lokal yang hidup di balik keindahan Gunung Patuha. Tersedia dalam Bahasa Indonesia dan English.",
   keywords: [
     "Kawah Putih",
     "folklor",

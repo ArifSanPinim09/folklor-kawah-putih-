@@ -8,6 +8,8 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
+  tArray: (key: string) => string[];
+  tTimeline: (key: string) => { title: string; description: string }[];
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -29,21 +31,39 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     document.documentElement.lang = lang;
   };
 
-  const t = (key: string): string => {
+  const resolve = (key: string): unknown => {
     const keys = key.split(".");
     let value: unknown = translations[language];
     for (const k of keys) {
       if (value && typeof value === "object" && k in value) {
         value = (value as Record<string, unknown>)[k];
       } else {
-        return key;
+        return undefined;
       }
     }
+    return value;
+  };
+
+  const t = (key: string): string => {
+    const value = resolve(key);
     return typeof value === "string" ? value : key;
   };
 
+  const tArray = (key: string): string[] => {
+    const value = resolve(key);
+    return Array.isArray(value) ? (value as string[]) : [key];
+  };
+
+  const tTimeline = (key: string): { title: string; description: string }[] => {
+    const value = resolve(key);
+    if (Array.isArray(value)) {
+      return value as { title: string; description: string }[];
+    }
+    return [];
+  };
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, tArray, tTimeline }}>
       {children}
     </LanguageContext.Provider>
   );

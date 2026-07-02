@@ -6,16 +6,11 @@ import { useLanguage } from "@/lib/language-context";
 import { IMAGE_MAPPING } from "@/lib/image-mapping";
 
 export default function GunungPatuhaPage() {
-  const { t } = useLanguage();
+  const { t, tArray, tTimeline } = useLanguage();
 
-  const paragraphs = t("stories.gunungPatuha.paragraphs");
-  const paragraphsArray = typeof paragraphs === "string" ? [paragraphs] : paragraphs;
-
-  const timelineItems = t("stories.gunungPatuha.timeline.items");
-  const timelineArray = typeof timelineItems === "string" ? [{ title: timelineItems, description: "" }] : timelineItems;
-
-  const imageCaptions = t("stories.gunungPatuha.imageCaptions");
-  const captionsArray = typeof imageCaptions === "string" ? [imageCaptions] : imageCaptions;
+  const paragraphsArray = tArray("stories.gunungPatuha.paragraphs");
+  const captionsArray = tArray("stories.gunungPatuha.imageCaptions");
+  const timelineArray = tTimeline("stories.gunungPatuha.timeline.items");
 
   const patuhaImages = [
     {

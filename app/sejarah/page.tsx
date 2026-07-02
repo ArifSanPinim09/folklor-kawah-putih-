@@ -6,10 +6,9 @@ import { useLanguage } from "@/lib/language-context";
 import { IMAGE_MAPPING } from "@/lib/image-mapping";
 
 export default function SejarahPage() {
-  const { t } = useLanguage();
+  const { t, tArray } = useLanguage();
 
-  const paragraphs = t("stories.sejarah.paragraphs");
-  const paragraphsArray = typeof paragraphs === "string" ? [paragraphs] : paragraphs;
+  const paragraphsArray = tArray("stories.sejarah.paragraphs");
 
   const sejarahImages = [
     {

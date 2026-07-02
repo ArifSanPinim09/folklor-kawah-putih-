@@ -9,10 +9,9 @@ export default function FactCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
-  const { t } = useLanguage();
+  const { t, tArray } = useLanguage();
 
-  const facts = t("factCarousel.facts");
-  const factsArray = typeof facts === "string" ? [facts] : facts;
+  const factsArray = tArray("factCarousel.facts");
 
   const handleDragEnd = (
     _: MouseEvent | TouchEvent | PointerEvent,

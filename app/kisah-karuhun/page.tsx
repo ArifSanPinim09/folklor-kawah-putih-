@@ -6,13 +6,10 @@ import { useLanguage } from "@/lib/language-context";
 import { IMAGE_MAPPING } from "@/lib/image-mapping";
 
 export default function KisahKaruhunPage() {
-  const { t } = useLanguage();
+  const { t, tArray } = useLanguage();
 
-  const paragraphs = t("stories.kisahKaruhun.paragraphs");
-  const paragraphsArray = typeof paragraphs === "string" ? [paragraphs] : paragraphs;
-
-  const imageCaptions = t("stories.kisahKaruhun.imageCaptions");
-  const captionsArray = typeof imageCaptions === "string" ? [imageCaptions] : imageCaptions;
+  const paragraphsArray = tArray("stories.kisahKaruhun.paragraphs");
+  const captionsArray = tArray("stories.kisahKaruhun.imageCaptions");
 
   const karuhunImages = [
     {

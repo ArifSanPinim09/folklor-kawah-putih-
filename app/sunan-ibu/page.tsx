@@ -6,13 +6,10 @@ import { useLanguage } from "@/lib/language-context";
 import { IMAGE_MAPPING } from "@/lib/image-mapping";
 
 export default function SunanIbuPage() {
-  const { t } = useLanguage();
+  const { t, tArray } = useLanguage();
 
-  const paragraphs = t("stories.sunanIbu.paragraphs");
-  const paragraphsArray = typeof paragraphs === "string" ? [paragraphs] : paragraphs;
-
-  const imageCaptions = t("stories.sunanIbu.imageCaptions");
-  const captionsArray = typeof imageCaptions === "string" ? [imageCaptions] : imageCaptions;
+  const paragraphsArray = tArray("stories.sunanIbu.paragraphs");
+  const captionsArray = tArray("stories.sunanIbu.imageCaptions");
 
   const sunanIbuImages = [
     {

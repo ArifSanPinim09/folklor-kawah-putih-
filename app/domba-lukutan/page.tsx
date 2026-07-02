@@ -6,13 +6,10 @@ import { useLanguage } from "@/lib/language-context";
 import { IMAGE_MAPPING } from "@/lib/image-mapping";
 
 export default function DombaLukutanPage() {
-  const { t } = useLanguage();
+  const { t, tArray } = useLanguage();
 
-  const paragraphs = t("stories.dombaLukutan.paragraphs");
-  const paragraphsArray = typeof paragraphs === "string" ? [paragraphs] : paragraphs;
-
-  const imageCaptions = t("stories.dombaLukutan.imageCaptions");
-  const captionsArray = typeof imageCaptions === "string" ? [imageCaptions] : imageCaptions;
+  const paragraphsArray = tArray("stories.dombaLukutan.paragraphs");
+  const captionsArray = tArray("stories.dombaLukutan.imageCaptions");
 
   const ritualImages = [
     {

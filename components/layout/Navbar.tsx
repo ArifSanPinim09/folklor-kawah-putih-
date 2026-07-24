@@ -17,6 +17,7 @@ const NAV_ITEMS = [
   { labelKey: "nav.kisahKaruhun", href: "/kisah-karuhun" },
   { labelKey: "nav.sunanIbu", href: "/sunan-ibu" },
   { labelKey: "nav.galeri", href: "/galeri" },
+  { labelKey: "nav.tentangPengembang", href: "/tentang-pengembang" },
 ];
 
 export default function Navbar() {

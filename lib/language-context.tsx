@@ -87,6 +87,7 @@ const translations = {
       kisahKaruhun: "Kisah Karuhun",
       sunanIbu: "Sunan Ibu",
       galeri: "Galeri",
+      tentangPengembang: "Tentang Pengembang",
       exploreFolklor: "Jelajahi folklor Kawah Putih",
     },
     hero: {
@@ -248,6 +249,7 @@ const translations = {
       kisahKaruhun: "Karuhun Story",
       sunanIbu: "Sunan Ibu",
       galeri: "Gallery",
+      tentangPengembang: "About Developer",
       exploreFolklor: "Explore Kawah Putih Folklore",
     },
     hero: {

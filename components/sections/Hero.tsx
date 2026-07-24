@@ -97,6 +97,51 @@ export default function Hero() {
         style={{ opacity }}
       >
         <div className="mx-auto max-w-4xl text-center">
+          {/* Logo Grid */}
+          <motion.div
+            className="mb-6 flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-5"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            {/* Logo Econique */}
+            <Image
+              src="/images/logo/logo-econique.png"
+              alt="Logo Econique"
+              width={120}
+              height={80}
+              className="h-12 w-auto object-contain sm:h-14 md:h-16 lg:h-20"
+              priority={false}
+            />
+            {/* Logo EKW */}
+            <Image
+              src="/images/logo/logo-ekw.png"
+              alt="Logo EKW"
+              width={120}
+              height={80}
+              className="h-12 w-auto object-contain sm:h-14 md:h-16 lg:h-20"
+              priority={false}
+            />
+            {/* Logo IPB */}
+            <Image
+              src="/images/logo/logo-ipb.png"
+              alt="Logo IPB"
+              width={120}
+              height={80}
+              className="h-12 w-auto object-contain sm:h-14 md:h-16 lg:h-20"
+              priority={false}
+            />
+            {/* Logo Kawah Putih */}
+            <Image
+              src="/images/logo/logo-kawah-putih.png"
+              alt="Logo Kawah Putih"
+              width={120}
+              height={80}
+              className="h-12 w-auto object-contain sm:h-14 md:h-16 lg:h-20"
+              priority={false}
+            />
+          </motion.div>
+
           {/* Eyebrow */}
           <motion.p
             className="mb-4 text-caption font-medium uppercase tracking-widest text-danau-500 sm:mb-6"

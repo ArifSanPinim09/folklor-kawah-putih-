@@ -17,7 +17,7 @@ export default function SejarahPage() {
       caption: t("stories.sejarah.eyebrow") === "Asal Mula" ? "Keindahan Kawah Putih yang telah dikenal sejak abad ke-19" : "The beauty of Kawah Putih known since the 19th century",
     },
     {
-      src: "/images/IMG_8978.jpg",
+      src: "/images/img-8978.jpg",
       alt: "Suasana kawasan Kawah Putih",
       caption: t("stories.sejarah.eyebrow") === "Asal Mula" ? "Fenomena alam yang memukau di kawasan Gunung Patuha" : "Stunning natural phenomena in Mount Patuha area",
     },

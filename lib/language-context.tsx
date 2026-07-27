@@ -140,6 +140,7 @@ const translations = {
     footer: {
       description: "Terima kasih telah menjelajahi folklor Kawah Putih. Semoga setiap cerita yang Anda baca menjadi pengingat bahwa keindahan alam dan budaya adalah warisan yang harus dijaga bersama.",
       copyright: `© ${new Date().getFullYear()} Folklor Kawah Putih`,
+      whatsapp: "Hubungi via WhatsApp",
     },
     gallery: {
       eyebrow: "Galeri Foto",
@@ -302,6 +303,7 @@ const translations = {
     footer: {
       description: "Thank you for exploring the folklore of Kawah Putih. May every story you read serve as a reminder that the beauty of nature and culture is a heritage that must be preserved together.",
       copyright: `© ${new Date().getFullYear()} Kawah Putih Folklore`,
+      whatsapp: "Contact via WhatsApp",
     },
     gallery: {
       eyebrow: "Photo Gallery",

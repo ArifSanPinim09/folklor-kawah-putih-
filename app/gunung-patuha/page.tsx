@@ -19,7 +19,7 @@ export default function GunungPatuhaPage() {
       caption: captionsArray[0] || "",
     },
     {
-      src: "/images/IMG_8977.jpg",
+      src: "/images/img-8977.jpg",
       alt: "Hutan pegunungan di kawasan Gunung Patuha",
       caption: captionsArray[1] || "",
     },

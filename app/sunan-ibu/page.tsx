@@ -13,12 +13,12 @@ export default function SunanIbuPage() {
 
   const sunanIbuImages = [
     {
-      src: "/images/IMG_8977.jpg",
+      src: "/images/img-8977.jpg",
       alt: "Pemandangan matahari terbit di kawasan Sunan Ibu",
       caption: captionsArray[0] || "",
     },
     {
-      src: "/images/IMG_8978.jpg",
+      src: "/images/img-8978.jpg",
       alt: "Suasana alam di sekitar Gunung Patuha",
       caption: captionsArray[1] || "",
     },

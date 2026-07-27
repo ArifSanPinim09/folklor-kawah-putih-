@@ -13,7 +13,7 @@ export default function KisahKaruhunPage() {
 
   const karuhunImages = [
     {
-      src: "/images/IMG_8978.jpg",
+      src: "/images/img-8978.jpg",
       alt: "Suasana kawasan Gunung Patuha yang sakral",
       caption: captionsArray[0] || "",
     },

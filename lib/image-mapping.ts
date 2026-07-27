@@ -4,28 +4,28 @@
 export const IMAGE_MAPPING = {
   // Landing Page Hero - panorama Kawah Putih
   hero: {
-    src: "/images/gunung patuha.jpg",
+    src: "/images/gunung-patuha.jpg",
     alt: "Panorama Kawah Putih dengan kabut yang menyelimuti",
     priority: true,
   },
 
   // Sejarah Kawah Putih (pembuka, bukan bagian dari 4 kisah)
   sejarah: {
-    src: "/images/kawah putih.jpg",
+    src: "/images/kawah-putih.jpg",
     alt: "Kawah Putih dari sudut pandang berbeda",
     priority: false,
   },
 
   // Domba Lukutan (01)
   dombaLukutan: {
-    src: "/images/domba lukutan.jpg",
+    src: "/images/domba-lukutan.jpg",
     alt: "Patung Domba Lukutan",
     priority: false,
   },
 
   // Gunung Patuha (02)
   gunungPatuha: {
-    src: "/images/gunung patuha.jpg",
+    src: "/images/gunung-patuha.jpg",
     alt: "Gunung Patuha",
     priority: false,
   },
@@ -62,19 +62,19 @@ export const IMAGE_MAPPING = {
   gallery: [
     {
       id: "kawah-putih-1",
-      src: "/images/kawah putih.jpg",
+      src: "/images/kawah-putih.jpg",
       alt: "Kawah Putih - pemandangan danau",
       caption: "Danau Kawah Putih",
     },
     {
       id: "domba-lukutan",
-      src: "/images/domba lukutan.jpg",
+      src: "/images/domba-lukutan.jpg",
       alt: "Patung Domba Lukutan dari dekat",
       caption: "Patung Domba Lukutan",
     },
     {
       id: "gunung-patuha",
-      src: "/images/gunung patuha.jpg",
+      src: "/images/gunung-patuha.jpg",
       alt: "Gunung Patuha dari kejauhan",
       caption: "Gunung Patuha",
     },
@@ -110,13 +110,13 @@ export const IMAGE_MAPPING = {
     },
     {
       id: "foto-tambahan-1",
-      src: "/images/IMG_8977.jpg",
+      src: "/images/img-8977.jpg",
       alt: "Pemandangan Kawah Putih",
       caption: "Pemandangan Alam",
     },
     {
       id: "foto-tambahan-2",
-      src: "/images/IMG_8978.jpg",
+      src: "/images/img-8978.jpg",
       alt: "Suasana Kawah Putih",
       caption: "Suasana Kawah Putih",
     },

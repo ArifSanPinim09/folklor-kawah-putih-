@@ -110,9 +110,7 @@ export default function Hero() {
               alt="Logo Econique"
               width={120}
               height={80}
-              style={{ width: "auto", height: "auto" }}
               className="h-12 w-auto object-contain sm:h-14 md:h-16 lg:h-20"
-              priority={false}
             />
             {/* Logo EKW */}
             <Image
@@ -120,9 +118,7 @@ export default function Hero() {
               alt="Logo EKW"
               width={120}
               height={80}
-              style={{ width: "auto", height: "auto" }}
               className="h-12 w-auto object-contain sm:h-14 md:h-16 lg:h-20"
-              priority={false}
             />
             {/* Logo IPB */}
             <Image
@@ -130,9 +126,7 @@ export default function Hero() {
               alt="Logo IPB"
               width={120}
               height={80}
-              style={{ width: "auto", height: "auto" }}
               className="h-12 w-auto object-contain sm:h-14 md:h-16 lg:h-20"
-              priority={false}
             />
             {/* Logo Kawah Putih */}
             <Image
@@ -140,9 +134,7 @@ export default function Hero() {
               alt="Logo Kawah Putih"
               width={120}
               height={80}
-              style={{ width: "auto", height: "auto" }}
               className="h-12 w-auto object-contain sm:h-14 md:h-16 lg:h-20"
-              priority={false}
             />
           </motion.div>
 
